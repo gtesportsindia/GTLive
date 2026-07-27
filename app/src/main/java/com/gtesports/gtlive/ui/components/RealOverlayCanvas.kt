@@ -353,7 +353,7 @@ fun RealOverlayCanvas(
                             }
                         }
                     }
-                                }
+                                }     
                                 @Composable
 private fun RenderOverlayContent(
     overlay: OverlayItem,
@@ -616,5 +616,42 @@ private fun RenderOverlayContent(
 
         else ->
             Color(0xFF0A0A0E).copy(alpha = 0.90f)
+    }
+}
+
+private fun OverlayItem.displayName(): String {
+    return when (type) {
+
+        OverlayType.WEBCAM -> "Webcam"
+
+        OverlayType.CAMERA_PIP -> "Camera PIP"
+
+        OverlayType.SCREEN_CAPTURE -> "Screen Capture"
+
+        OverlayType.LOGO -> "Logo"
+
+        OverlayType.WATERMARK -> "Watermark"
+
+        OverlayType.CLOCK,
+        OverlayType.DATE_TIME -> "Clock"
+
+        OverlayType.TEXT -> {
+            if (textContent.isBlank())
+                "Text"
+            else
+                textContent
+        }
+
+        OverlayType.SUBSCRIBER_COUNTER ->
+            "Subscriber Goal"
+
+        OverlayType.VIEWER_COUNTER ->
+            "Viewer Counter"
+
+        OverlayType.DONATION_GOAL ->
+            "Donation Goal"
+
+        else ->
+            name.ifBlank { "Overlay" }
     }
 }
