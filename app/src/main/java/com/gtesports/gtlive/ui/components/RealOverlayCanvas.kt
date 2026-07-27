@@ -583,7 +583,8 @@ private fun RenderOverlayContent(
             )
         }
     }
-}private fun getOverlayBackgroundColor(
+}
+                private fun getOverlayBackgroundColor(
     type: OverlayType
 ): Color {
 
