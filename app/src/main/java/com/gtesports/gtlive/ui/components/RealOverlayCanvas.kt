@@ -185,5 +185,113 @@ fun RealOverlayCanvas(
                             Modifier
                         }
                     )
+                                    Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(getOverlayBackgroundColor(overlay.type))
+                        .border(
+                            width = if (isSelected) 2.dp else 1.dp,
+                            color = if (isSelected)
+                                Color(0xFFFF0B3A)
+                            else
+                                Color.White.copy(alpha = 0.20f),
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .padding(horizontal = 12.dp, vertical = 8.dp)
+                ) {
+                    RenderOverlayContent(
+                        overlay = overlay,
+                        liveTimeStr = currentTime
+                    )
+                }
+
+                if (isSelected) {
+
+                    Canvas(
+                        modifier = Modifier.matchParentSize()
+                    ) {
+                        drawRect(
+                            color = Color(0xFFFF0B3A),
+                            style = Stroke(width = 3f)
+                        )
+                    }
+
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.TopCenter)
+                            .offset(y = (-44).dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(Color(0xFF111111))
+                            .border(
+                                1.dp,
+                                Color(0xFFFF0B3A),
+                                RoundedCornerShape(10.dp)
+                            )
+                            .padding(horizontal = 10.dp, vertical = 6.dp)
+                    ) {
+
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(14.dp)
+                        ) {
+
+                            Icon(
+                                imageVector = Icons.Default.Lock,
+                                contentDescription = "Lock",
+                                tint = Color.White,
+                                modifier = Modifier
+                                    .size(18.dp)
+                                    .clickable {
+                                        onToggleLock(overlay.id)
+                                    }
+                            )
+
+                            Icon(
+                                imageVector = Icons.Default.ContentCopy,
+                                contentDescription = "Duplicate",
+                                tint = Color.White,
+                                modifier = Modifier
+                                    .size(18.dp)
+                                    .clickable {
+                                        onDuplicateOverlay(overlay.id)
+                                    }
+                            )
+
+                            Icon(
+                                imageVector = Icons.Default.KeyboardArrowUp,
+                                contentDescription = "Bring Forward",
+                                tint = Color.White,
+                                modifier = Modifier
+                                    .size(18.dp)
+                                    .clickable {
+                                        onBringForward(overlay.id)
+                                    }
+                            )
+
+                            Icon(
+                                imageVector = Icons.Default.KeyboardArrowDown,
+                                contentDescription = "Send Backward",
+                                tint = Color.White,
+                                modifier = Modifier
+                                    .size(18.dp)
+                                    .clickable {
+                                        onSendBackward(overlay.id)
+                                    }
+                            )
+
+                            Icon(
+                                imageVector = Icons.Default.Delete,
+                                contentDescription = "Delete",
+                                tint = Color(0xFFFF3B30),
+                                modifier = Modifier
+                                    .size(18.dp)
+                                    .clickable {
+                                        onDeleteOverlay(overlay.id)
+                                    }
+                            )
+                        }
+                    }
+                }
+                }
             ) {
                 
