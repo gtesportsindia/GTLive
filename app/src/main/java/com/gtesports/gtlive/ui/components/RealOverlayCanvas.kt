@@ -353,8 +353,10 @@ fun RealOverlayCanvas(
                             }
                         }
                     }
-                                }
-                                }     
+                  }
+            }
+          }
+        }     
                                 @Composable
 private fun RenderOverlayContent(
     overlay: OverlayItem,
