@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GT LIVE</string>
+    <string name="esports_tagline">Esports Live Streaming</string>
+    <string name="start_broadcast">Start YouTube Live Broadcast</string>
+    <string name="end_broadcast">End Broadcast</string>
+    <string name="camera_permission_required">Camera &amp; Audio permissions are required for live streaming</string>
+</resources>
